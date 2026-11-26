@@ -1,0 +1,26 @@
+node_modules/
+dist/
+extension/dist/
+*.log
+.DS_Store
+.claude-chrome-mcp/
+
+# AgentKit kit install — installed globally on this machine, not project source
+.claude/
+.agentkit/
+release-manifest.json
+
+# Credentials and machine-local account data must never be shared with source.
+.env
+.env.*
+*.env
+*.key
+*.pem
+*.p12
+credentials.json
+secrets.json
+berget-api-key
+config/private.*
+
+# Plans, audit reports and session handoffs carry private, machine-local context; keep them out of Git.
+plans/

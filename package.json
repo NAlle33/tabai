@@ -1,0 +1,55 @@
+{
+  "name": "tabai",
+  "version": "0.24.1",
+  "private": true,
+  "type": "module",
+  "description": "Tabai — standalone TypeScript MCP server controlling Chrome via a custom extension",
+  "license": "MIT",
+  "bin": {
+    "tabai": "dist/server.js",
+    "claude-chrome-mcp": "dist/server.js"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --watch",
+    "postinstall": "node build.mjs",
+    "register": "node scripts/register.mjs",
+    "doctor": "node scripts/doctor.mjs",
+    "kill-broker": "node scripts/kill-broker.mjs",
+    "reload": "node scripts/reload-extension.mjs",
+    "set-token": "node scripts/set-token.mjs",
+    "set-extension-id": "node scripts/set-extension-id.mjs",
+    "typecheck": "tsc --noEmit && tsc --project tsconfig.scripts.json && tsc --project tsconfig.tests.json",
+    "start": "node dist/server.js",
+    "pretest": "npm run build && node test/logger-redaction.mjs",
+    "test": "node test/reference-integrity.mjs && node test/page-wait.mjs && node test/assistant-local-runtime.mjs && node test/assistant-mail-methods.mjs && node test/assistant-mail-methods-controller.mjs && node test/assistant-controller.mjs && node test/assistant-mail-state.mjs && node test/assistant-search.mjs && node test/assistant-cases.mjs && node test/assistant-account-test.mjs && node test/assistant-workspace-features.mjs && node test/assistant-improvements.mjs && node test/assistant-notifications.mjs && node test/assistant-fixture-contract.mjs && node test/assistant-gmail-print.mjs && node test/assistant-gmail-thread-read.mjs && node test/assistant-zoho-api.mjs && node test/assistant-execution.mjs && node test/assistant-forgotten-replies.mjs && node test/tool-names-consistency.mjs && node test/extension-manifest.mjs && node test/extension-no-eval.mjs && node test/mcp-registration.mjs && node test/url-guard.mjs && node test/session-of.mjs && node test/session-stamp.mjs && node test/handler-gate-guard.mjs && node test/num-env.mjs && node test/token-parity.mjs && node test/group-identity.mjs && node test/group-reuse.mjs && node test/worker-group-lock.mjs && node test/build-identity.mjs && node test/diagnostics.mjs && node test/health-diagnostics.mjs && node test/timeout-incidents.mjs && node test/recipe-checkpoints.mjs && node test/agent-focus.mjs && node test/browser-pointer.mjs && node test/visual-presence.mjs && node test/content-console.mjs && node test/live-helper-lifecycle.mjs && node test/tool-catalog-timeouts.mjs && node test/tool-listing.mjs && node test/upload-path-guard.mjs && node test/tool-timeouts.mjs && node test/batch-validation.mjs && node test/workflow-validation.mjs && node test/schema-compatibility.mjs && node test/workflow-control.mjs && node test/keyboard-input.mjs && node test/loop-guard.mjs && node test/panel-debugging.mjs && node test/panel-router.mjs && node test/panel-channel-lifecycle.mjs && node test/personal-modules.mjs && node test/recipe-store.mjs && node test/recipe-recording.mjs && node test/run-history.mjs && node test/bridge-security.mjs && node test/bridge-resilience.mjs && node test/bridge-client-resilience.mjs && node test/download-state.mjs && node test/cdp-heal.mjs && node test/session-capture-lifecycle.mjs && node test/session-reaper.mjs && node test/assistant-pulse.mjs && node test/multi-session.mjs && node test/broker-protocol.mjs && node test/broker-environment.mjs && node test/smoke.mjs && node test/bridge-roundtrip.mjs && node test/artifact-store.mjs && node test/assistant-berget.mjs && node test/assistant-berget-agent.mjs && node test/assistant-berget-runner.mjs && node test/assistant-chat.mjs && node test/assistant-files.mjs && node test/assistant-page-share.mjs && node test/assistant-context-menu.mjs && node test/assistant-web.mjs && node test/assistant-full-browser.mjs && node test/assistant-compare.mjs && node test/assistant-watches.mjs && node test/assistant-routines.mjs && node test/assistant-profile.mjs && node test/assistant-budget.mjs && node test/assistant-connections.mjs && node test/assistant-conversations.mjs && node test/assistant-module-service.mjs && node test/assistant-trial.mjs && node test/docs-links.mjs",
+    "test:assistant-local-runtime": "node test/assistant-local-runtime.mjs",
+    "test:assistant-full-browser": "node test/assistant-full-browser.mjs",
+    "local-model:smoke": "node scripts/assistant-local-model-smoke.mjs",
+    "local-model:benchmark": "node scripts/assistant-local-model-smoke.mjs --benchmark",
+    "test:smoke": "node test/smoke.mjs",
+    "test:roundtrip": "node test/bridge-roundtrip.mjs",
+    "test:ci": "node test/ci-harness.mjs",
+    "smoke": "node test/smoke-real-chrome.mjs",
+    "trial": "node scripts/assistant-trial.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@napi-rs/canvas": "0.1.100",
+    "@tesseract.js-data/swe": "1.0.0",
+    "gifenc": "^1.0.3",
+    "mammoth": "1.13.0",
+    "pdfjs-dist": "5.4.624",
+    "tesseract.js": "7.0.0",
+    "ws": "^8.18.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.287",
+    "@types/node": "^22.0.0",
+    "@types/ws": "^8.5.12",
+    "esbuild": "^0.28.2",
+    "playwright": "^1.60.0",
+    "typescript": "^5.6.0"
+  }
+}

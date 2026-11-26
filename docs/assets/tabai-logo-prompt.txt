@@ -1,0 +1,8 @@
+Asset: tabai-mandala.png
+Name: Tabai
+Mode: built-in imagegen generation with transparent_background=true.
+Master: 1254 x 1254 RGBA PNG; header and manifest icons are resized PNG exports.
+Headers pair the emblem with real system-font text. This is raster artwork, not SVG.
+
+Prompt:
+Use case: logo-brand. Create the final new emblem for Tabai, a calm desktop browser automation tool. One centered, beautifully balanced geometric mandala on a genuinely transparent background. Eightfold radial symmetry, two restrained interlocking rings of rounded petal shapes, a small clear central opening. Bold clean monoline construction, generous negative space, precise optical balance, distinctive compact silhouette. Deep forest green #184b3f only, flat solid ink; no gradients, no shadows, no background, no tile, no mockup, no text or letters. It must remain recognizable at 16–32 pixels, so keep the structure simple and substantial, with no tiny ornamental details. Fill about 88 percent of the square canvas; equal padding on all sides. This is a new replacement for an existing browser-tab-shaped logo, so do not include a tab, arch or browser window. Deliver one crisp square production PNG with alpha transparency.

@@ -1,0 +1,64 @@
+{
+  "name": "tabai-github-pr-search",
+  "actions": [
+    {
+      "tool": "navigate",
+      "args": {
+        "url": "https://github.com/NAlle33/tabai/pulls"
+      },
+      "expect": {
+        "selector": "#repo-pulls-dashboard-filter-input",
+        "timeoutMs": 10000
+      }
+    },
+    {
+      "tool": "form_input",
+      "target": {
+        "selector": "#repo-pulls-dashboard-filter-input"
+      },
+      "args": {
+        "value": {
+          "$param": "query"
+        }
+      },
+      "expect": {
+        "fieldValue": {
+          "selector": "#repo-pulls-dashboard-filter-input",
+          "value": {
+            "$param": "query"
+          }
+        }
+      }
+    },
+    {
+      "tool": "computer",
+      "target": {
+        "selector": "#repo-pulls-dashboard-filter-input"
+      },
+      "args": {
+        "action": "left_click"
+      }
+    },
+    {
+      "tool": "computer",
+      "args": {
+        "action": "key",
+        "text": "Enter"
+      },
+      "expect": {
+        "selector": "a[href$=\"/NAlle33/tabai/pull/7\"]",
+        "timeoutMs": 10000
+      }
+    },
+    {
+      "tool": "get_page_text"
+    }
+  ],
+  "description": "Find pull requests with a parameterized query and fresh document-bound targets.",
+  "parameters": {
+    "query": {
+      "type": "string",
+      "default": "is:pr is:merged \"completed Tabai migration\" in:title"
+    }
+  }
+}

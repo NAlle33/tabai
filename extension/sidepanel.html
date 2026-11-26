@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tabai · Din vardagsassistent</title>
+    <link rel="icon" href="icons/tabai-32.png" />
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <!-- Shown only until an assistant renders its own one-row header. -->
+      <header class="shell-header"><img src="assets/tabai-mandala.png" alt="" width="128" height="128" /><span>Tabai</span></header>
+      <h1 class="visually-hidden">Tabai · Din vardagsassistent</h1>
+      <section id="personal-modules" aria-label="Din vardagsassistent" hidden></section>
+      <!-- The assistant's Settings → Avancerat page adopts these controls. data-module-id marks
+           them as a separate owner, so assistant and module busy states never toggle them. -->
+      <div id="technical-home" class="technical-home">
+      <details class="technical-controls" id="technical-controls" data-module-id="control-panel">
+      <summary>Sessioner, recept och teknisk historik</summary>
+      <div class="technical-session">
+        <div class="session-field">
+          <label for="session">Session</label>
+          <select id="session"><option value="">Ansluter…</option></select>
+        </div>
+        <button id="refresh" type="button">Uppdatera nu</button>
+      </div>
+      <p id="connection" class="muted" role="status">Hämtar anslutna sessioner.</p>
+      <p id="connection-error" class="notice error" role="alert" hidden></p>
+      <nav aria-label="Panelvyer">
+        <button type="button" data-view="activity" aria-current="page">Pågår</button>
+        <button type="button" data-view="recipes">Recept</button>
+        <button type="button" data-view="history">Historik</button>
+      </nav>
+      <div class="technical-views">
+        <section id="activity-view" aria-labelledby="activity-heading">
+          <h3 id="activity-heading">Aktuellt arbete</h3>
+          <div id="activity"><p class="muted">Välj en ansluten session för att se dess arbete.</p></div>
+          <p id="stop-feedback" class="notice" role="status" hidden></p>
+          <p class="muted footnote">Stopp avslutar det pågående steget och dess kontroll. Redan utförda ändringar finns kvar.</p>
+        </section>
+        <section id="recipes-view" aria-labelledby="recipes-heading" hidden>
+          <div id="recording-root"></div>
+          <h3 id="recipes-heading">Kör ett recept</h3>
+          <p class="muted">Återanvänd ett sparat arbetsflöde i den valda sessionen.</p>
+          <p id="recipes-message" class="notice" role="status"></p>
+          <form id="recipe-form" hidden>
+            <div class="field"><label for="recipe">Recept</label><select id="recipe"></select></div>
+            <p id="recipe-description" class="muted"></p>
+            <div class="field"><label for="target-tab">Flik att använda</label><select id="target-tab" required></select><p class="muted">Används av steg som saknar en egen flik.</p></div>
+            <fieldset id="parameters"><legend>Parametrar</legend><div id="parameter-fields"></div></fieldset>
+            <p id="form-error" class="notice error" role="alert" hidden></p>
+            <p id="start-help" class="muted"></p>
+            <div class="field"><label for="resume-checkpoint">Körning</label><select id="resume-checkpoint"><option value="">Ny körning</option></select><p id="checkpoint-help" class="muted"></p></div>
+            <label class="checkpoint-option"><input id="resumable" type="checkbox"> Spara kontrollpunkter för säker återupptagning</label>
+            <button id="start" class="primary" type="submit">Starta recept</button>
+          </form>
+        </section>
+        <section id="history-view" aria-labelledby="history-heading" hidden>
+          <h3 id="history-heading">Tidigare körningar</h3>
+          <p class="muted">De senaste 100 körningarna i serverns lokala historik, delad mellan sessioner. Inmatade värden och sidresultat sparas inte här.</p>
+          <div id="history-list"><p class="muted">Välj en session för att läsa historiken.</p></div>
+        </section>
+      </div>
+      <p class="technical-link"><a href="popup.html" target="_blank" rel="noopener">Anslutning och inställningar</a></p>
+      </details>
+      </div>
+    </div>
+    <script src="dist/sidepanel.js"></script>
+  </body>
+</html>

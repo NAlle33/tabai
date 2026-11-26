@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Tabai</title>
+    <link rel="icon" href="icons/tabai-32.png" />
+    <style>
+      body {
+        font: 13px/1.4 system-ui, sans-serif;
+        width: 280px;
+        margin: 0;
+        padding: 14px;
+        color: #1a1a1a;
+      }
+      h1 {
+        margin: 0 0 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 28px;
+        font-weight: 650;
+        color: #102b49;
+      }
+      h1 img {
+        display: block;
+        width: 40px;
+        height: 40px;
+      }
+      #status {
+        padding: 6px 8px;
+        border-radius: 6px;
+        margin-bottom: 12px;
+        font-weight: 600;
+        background: #eee;
+      }
+      #status.ok {
+        background: #d6f5dd;
+        color: #0a6b2e;
+      }
+      #status.warn {
+        background: #fff4ce;
+        color: #7a5b00;
+      }
+      #status.err {
+        background: #fde0e0;
+        color: #a11;
+      }
+      #info,
+      #extid {
+        font-size: 11px;
+        color: #888;
+        margin: -6px 0 12px;
+      }
+      #extid {
+        margin-top: -8px;
+        user-select: all;
+      }
+      label {
+        display: block;
+        margin: 8px 0 2px;
+        font-size: 11px;
+        color: #555;
+      }
+      input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 5px 7px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font: inherit;
+      }
+      .row {
+        display: flex;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      button {
+        flex: 1;
+        padding: 7px;
+        border: 0;
+        border-radius: 6px;
+        background: #245747;
+        color: #fff;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      button.secondary {
+        background: #e6e6e6;
+        color: #333;
+      }
+      button.wide {
+        flex: none;
+        width: 100%;
+        margin-top: 8px;
+      }
+      .presence-setting { display: flex; align-items: flex-start; gap: 9px;
+        margin: 14px 0 4px; padding: 11px; border: 1px solid #d9e5dd;
+        border-radius: 9px; background: #f7faf6; font-size: 12px; color: #245747; }
+      .presence-setting input { width: 15px; height: 15px; flex-shrink: 0; margin: 2px 0; accent-color: #245747; }
+      .presence-setting small { display: block; margin-top: 3px; color: #65756b; font-size: 10px; }
+      #presence-error, #agent-focus-error, #url-error { color: #a11; font-size: 11px; }
+    </style>
+  </head>
+  <body>
+    <h1><img src="assets/tabai-mandala.png" alt="Tabai" width="128" height="128" /><span aria-hidden="true">Tabai</span></h1>
+    <div id="status">Status: …</div>
+    <div id="info"></div>
+    <div id="extid"></div>
+    <button id="open-panel" class="wide">Öppna kontrollpanelen</button>
+    <div id="panel-error" role="status"></div>
+    <label class="presence-setting" for="presence">
+      <input id="presence" type="checkbox" checked />
+      <span>Visa Tabai på sidan<small>Logga, status och mjuk färgkant. Döljs i skärmbilder.</small></span>
+    </label>
+    <div id="presence-error" role="status"></div>
+    <label class="presence-setting" for="agent-focus">
+      <input id="agent-focus" type="checkbox" />
+      <span>Tillåt att agenter tar fram Chrome<small>Avstängt: agentens fönster stannar i bakgrunden.</small></span>
+    </label>
+    <div id="agent-focus-error" role="status"></div>
+    <label for="url">Bridge URL</label>
+    <input id="url" placeholder="ws://127.0.0.1:9223" />
+    <label for="token">Token (optional)</label>
+    <input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="leave empty for loopback dev" />
+    <div class="row">
+      <button id="save">Save &amp; reconnect</button>
+      <button id="reconnect" class="secondary">Reconnect</button>
+    </div>
+    <div id="url-error" role="status"></div>
+    <button id="reloadext" class="secondary wide">
+      Reload extension (after rebuild)
+    </button>
+    <script src="dist/popup.js"></script>
+  </body>
+</html>

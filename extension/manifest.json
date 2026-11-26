@@ -1,0 +1,67 @@
+{
+  "manifest_version": 3,
+  "name": "Tabai",
+  "version": "0.24.1",
+  "description": "Bridges a local Tabai MCP server to this Chrome browser over a loopback WebSocket.",
+  "icons": {
+    "16": "icons/tabai-16.png",
+    "32": "icons/tabai-32.png",
+    "48": "icons/tabai-48.png",
+    "128": "icons/tabai-128.png"
+  },
+  "background": {
+    "service_worker": "dist/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "dist/content.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Tabai",
+    "default_icon": {
+      "16": "icons/tabai-16.png",
+      "32": "icons/tabai-32.png",
+      "48": "icons/tabai-48.png",
+      "128": "icons/tabai-128.png"
+    }
+  },
+  "permissions": [
+    "tabs",
+    "tabGroups",
+    "scripting",
+    "offscreen",
+    "storage",
+    "debugger",
+    "downloads",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "minimum_chrome_version": "116",
+  "optional_permissions": [
+    "notifications",
+    "contextMenus"
+  ],
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "commands": {
+    "share-page": {
+      "suggested_key": {
+        "default": "Alt+Shift+D"
+      },
+      "description": "Dela sidan med Tabai"
+    }
+  }
+}

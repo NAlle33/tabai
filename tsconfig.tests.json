@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.scripts.json",
+  "compilerOptions": {
+    "checkJs": false
+  },
+  "include": [
+    "test/protocol-fixtures.mjs",
+    "test/protocol-fixtures-typecheck.ts",
+    "test/bridge-roundtrip.mjs",
+    "test/multi-session.mjs",
+    "test/bridge-security.mjs",
+    "test/bridge-resilience.mjs",
+    "test/bridge-client-resilience.mjs",
+    "test/broker-protocol.mjs"
+  ]
+}
