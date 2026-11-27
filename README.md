@@ -4,6 +4,8 @@
 
 Tabai is a standalone TypeScript MCP server that controls Chrome through a custom Manifest-v3 extension. It is an independent, from-scratch implementation that offers the tool surface of Anthropic's "Claude in Chrome" with no dependency on Anthropic's extension or cloud. Tabai is not affiliated with or endorsed by Anthropic or Google.
 
+**[Watch the 21-second demo on TechTeddy](https://techteddy.ai/en/apps/tabai#demo).** Tabai opens the site in its own Chrome tab group and gets the TechTeddy bear to play saxophone.
+
 Tabai is provided as-is under the [MIT License](LICENSE), without warranty or a support commitment. Report security problems privately as described in [docs/SECURITY.md](docs/SECURITY.md).
 
 Tabai was published as `claude-chrome-mcp` until September 2026. Existing installations keep working unchanged: the `claude-chrome` registration name with its `mcp__claude-chrome__*` tool prefix, the `claude-chrome-mcp` executable, the `~/.claude-chrome-mcp` data directory and the `CCMCP_*` environment variables are retained on purpose. [docs/tabai-migration.md](docs/tabai-migration.md) lists what changed and how to move an existing checkout.
